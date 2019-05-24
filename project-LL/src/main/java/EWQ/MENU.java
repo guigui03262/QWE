@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 public class MENU extends Application	{
 	
 	private AnchorPane pane;
-	private Button op1, op2, op3;
+	private Button op1, op2, op3, op4;
 	private static Stage stage;
 	
 	@Override
@@ -28,6 +28,7 @@ public class MENU extends Application	{
 		stage.setResizable(false);
 		stage.show();
 		B();
+		E();
 		MENU.stage = stage;
        
 	}
@@ -39,7 +40,9 @@ public class MENU extends Application	{
 		pane.setStyle("-fx-background-color:	linear-gradient(from	0%	0%	to	100%	100%,	green	0%,	silver	50%);");
 		op1 = new Button("--PERFIL--");
 		op2 = new Button("--INFORMACOES--");
-		pane.getChildren().addAll(op1, op2);
+		op3 = new Button("--VIDEO--");
+		op4 = new Button("--Leiloes Acabados--");
+		pane.getChildren().addAll(op1, op2, op3,op4);
 	}
 
 	private void B() {
@@ -47,6 +50,10 @@ public class MENU extends Application	{
 		op1.setLayoutY(200);
 		op2.setLayoutX((pane.getWidth() - op2.getWidth()) / 2);
 		op2.setLayoutY(300);
+		op3.setLayoutX((pane.getWidth() - op3.getWidth()) / 2);
+		op3.setLayoutY(400);
+		op4.setLayoutX((pane.getWidth() - op4.getWidth()) / 2);
+		op4.setLayoutY(500);
 	}
 	
 	private void C() {
@@ -66,6 +73,16 @@ public class MENU extends Application	{
 				try {
 					new TELA().start(new Stage());
 					MENU.stage.close();
+				} catch (Exception e) {
+					e.printStackTrace();}
+			}
+		});
+		}
+	private void E() {
+		op3.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent arg0) {
+				try {
+					new Video().start(new Stage());
 				} catch (Exception e) {
 					e.printStackTrace();}
 			}

@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 public class TELA extends Application{
 	public void start(Stage stage) throws Exception {
 		
+		
 		AnchorPane pane = new AnchorPane();
 		pane.setPrefSize(800, 600);
 		pane.setStyle("-fx-background-color:	linear-gradient(from	0%	0%	to	100%	100%,	green	0%,	silver	50%);");
@@ -21,7 +22,7 @@ public class TELA extends Application{
 
 		
 		TextArea textArea = new TextArea();
-		textArea.setPrefSize(780, 590);
+		textArea.setPrefSize(780, 390);
 		textArea.setLayoutX(45);
 		textArea.setFont(Font.font ("Verdana", 15));
 		textArea.setText("O que é e como funciona um leilão?" + "\n" 

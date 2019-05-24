@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 import EWQ.ERROR;
 import EWQ.MENU;
-
+import EWQ.Video;
 
 public class Main extends Application {
 

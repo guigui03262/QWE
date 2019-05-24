@@ -1,41 +1,51 @@
 package EWQ;
 
 
-	import javafx.application.Application;
-	import javafx.scene.Scene;
-	import javafx.scene.layout.StackPane;
-	import javafx.scene.media.Media;
-	import javafx.scene.media.MediaPlayer;
-	import javafx.scene.media.MediaView;
-	import javafx.stage.Stage;
+import java.io.File;
+import javafx.application.Application;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
-	public class Video{
+public class Video extends Application {
 
-	 private String VIDEO_URL = getClass().getResource(
-	   "/Cesar Menotti, Fabiano - Leilão.mp4").toString();
+    @Override
+    public void start(Stage primaryStage) throws Exception  {
+        String workingDir = System.getProperty("user.dir");
+        final File f = new File(workingDir, "src\\Cesar Menotti, Fabiano - Leilão.mp4");
 
-	 public static void main(String[] args) {
-	  launch();
-	 }
+        final Media m = new Media(f.toURI().toString());
+        final MediaPlayer mp = new MediaPlayer(m);
+        final MediaView mv = new MediaView(mp);
 
-	 private static void launch() {
-		// TODO Auto-generated method stub
-		
-	}
+        final DoubleProperty width = mv.fitWidthProperty();
+        final DoubleProperty height = mv.fitHeightProperty();
 
-	public void start(Stage palco) throws Exception {
+        width.bind(Bindings.selectDouble(mv.sceneProperty(), "width"));
+        height.bind(Bindings.selectDouble(mv.sceneProperty(), "height"));
 
-	  Media media = new Media(VIDEO_URL); // 1
-	  MediaPlayer mediaPlayer = new MediaPlayer(media); // 2
-	  MediaView mediaView = new MediaView(mediaPlayer); // 3
+        mv.setPreserveRatio(true);
 
-	  StackPane raiz = new StackPane();
-	  raiz.getChildren().add(mediaView); // 4
-	  Scene cena = new Scene(raiz, 600, 400);
-	  palco.setTitle("Tocando Video em JavaFX");
-	  palco.setScene(cena);
-	  palco.show();
+        StackPane root = new StackPane();
+        root.getChildren().add(mv);
 
-	  mediaPlayer.play(); // 4
-	 }
+        final Scene scene = new Scene(root, 960, 540);
+        scene.setFill(Color.BLACK);
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Video Player");
+        primaryStage.show();
+
+        mp.play();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 }
