@@ -28,6 +28,7 @@ public class MENU extends Application	{
 		stage.setResizable(false);
 		stage.show();
 		B();
+		F();
 		E();
 		MENU.stage = stage;
        
@@ -88,4 +89,15 @@ public class MENU extends Application	{
 			}
 		});
 		}
+	private void F() {
+		op4.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent arg0) {
+				try {
+					new LLL().start(new Stage());
+				} catch (Exception e) {
+					e.printStackTrace();}
+			}
+		});
+		}
+	
 }

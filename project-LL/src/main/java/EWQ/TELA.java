@@ -1,13 +1,19 @@
 package EWQ;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
+
 public class TELA extends Application{
+	
+	private Button AV;
 	public void start(Stage stage) throws Exception {
 		
 		
@@ -20,6 +26,9 @@ public class TELA extends Application{
 		stage.setTitle("INFORMACAO AUCTION");
 		stage.setResizable(false);
 
+		AV = new Button("VOLTAR");
+		AV.setLayoutX((pane.getWidth() - AV.getWidth()) / 2);
+		AV.setLayoutY(900);
 		
 		TextArea textArea = new TextArea();
 		textArea.setPrefSize(780, 390);
@@ -35,9 +44,21 @@ public class TELA extends Application{
 				+ "Pode ser leiloado tanto um único bem, como um carro, como um lote com vários itens, como um "+ "\n"
 				+ "conjunto de móveis de escritório e um computador.");
 				
-		pane.getChildren().addAll(textArea);
+		C();
+		pane.getChildren().addAll(textArea,AV);
 		stage.show();
 	}
 
+	private void C() {
+		AV.setOnAction(new EventHandler<ActionEvent>() {
+			public void handle(ActionEvent arg0) {
+				try {
+					new MENU().start(new Stage());
+					//TELA.stage.close();
+				} catch (Exception e) {
+					e.printStackTrace();}
+			}
+		});
+		}
 
 }

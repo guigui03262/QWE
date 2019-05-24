@@ -11,11 +11,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class PERFIL extends Application {
+public class LLL extends Application {
 
 	private AnchorPane pane;
 	private Button bt1, AV;
-	public TextField tx;
+	public TextField tx, tx2, tx3;
 	private Label LB1, LB2;
 	static Stage stage;
 	
@@ -28,11 +28,19 @@ public class PERFIL extends Application {
 		
 		
 		tx = new TextField();
-		tx.setPromptText("DIGITE...");
+		tx.setPromptText("NOME DO LEILAO");
 		tx.setLayoutX((pane.getWidth() - tx.getWidth()) / 2);
 		tx.setLayoutY(50);
 		
-		String nome = tx.getText();
+		tx2 = new TextField();
+		tx2.setPromptText("DIA em 00/00/0000");
+		tx2.setLayoutX((pane.getWidth() - tx.getWidth()) / 2);
+		tx2.setLayoutY(100);
+		
+		tx3 = new TextField();
+		tx3.setPromptText("Valor Inicial R$");
+		tx3.setLayoutX((pane.getWidth() - tx.getWidth()) / 2);
+		tx3.setLayoutY(200);
 		
 		AV = new Button("VOLTAR");
 		AV.setLayoutX((pane.getWidth() - AV.getWidth()) / 2);
@@ -40,22 +48,17 @@ public class PERFIL extends Application {
 		
 		bt1 = new Button("Clique Para Confirmar");
 		bt1.setLayoutX((pane.getWidth() - bt1.getWidth()) / 2);
-		bt1.setLayoutY(100);
+		bt1.setLayoutY(300);
 		
-		LB1 = new Label(nome);
-		LB1.setFont(Font.font ("Verdana", 40));
-		LB1.setLayoutX((pane.getWidth() - bt1.getWidth()) / 2);
-		LB1.setLayoutY(220);
 		
-		LB2 = new Label("COMO GOSTARIA DE SER CHAMADO");
+		LB2 = new Label("Leilao");
 		LB2.setFont(Font.font ("Verdana", 40));
 		LB2.setLayoutX((pane.getWidth() - bt1.getWidth()) / 2);
 		LB2.setLayoutY(1);
 		
-		pane.getChildren().addAll(bt1, tx, LB1,LB2,AV);
+		pane.getChildren().addAll(bt1, tx, tx2, tx3, LB2, AV);
 	
-		
-		bt1.setOnAction(e -> mudarnome(tx.getText()));                
+		            
 		
 		
 		
@@ -63,24 +66,19 @@ public class PERFIL extends Application {
 		C();
 		Scene scene = new Scene(pane);
 		stage.setScene(scene);
-		stage.setTitle("PErfil AUCTION");
+		stage.setTitle("LLL AUCTION");
 		stage.setResizable(false);
 		stage.show();
 		PERFIL.stage = stage;
        
 	}
 	
-	public void mudarnome(String nome) {
-		LB1.setText(nome);
-
-			}
-	
 	private void C() {
 		AV.setOnAction(new EventHandler<ActionEvent>() {
 			public void handle(ActionEvent arg0) {
 				try {
 					new MENU().start(new Stage());
-					PERFIL.stage.close();
+					LLL.stage.close();
 				} catch (Exception e) {
 					e.printStackTrace();}
 			}
