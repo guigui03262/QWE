@@ -1,5 +1,7 @@
 package QWE;
 
+
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -10,10 +12,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import javax.swing.text.AttributeSet.FontAttribute;
 
 import EWQ.ERROR;
 import EWQ.MENU;
 import EWQ.Video;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 
 public class Main extends Application {
 
@@ -25,6 +30,7 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage stage) throws Exception {
+
 		initComponents();
 		initListeners();
 		Scene scene = new Scene(pane);
@@ -35,6 +41,7 @@ public class Main extends Application {
 		initLayout();
 		Main.stage = stage;
        
+	
 	}
 
 	private void initLayout() {
@@ -61,6 +68,7 @@ public class Main extends Application {
 		btSair = new Button("Sair");
 		btSair.getStyleClass().add("btSair");
 		pane.getChildren().addAll(txLogin, txSenha, btEntrar, btSair);
+		
 	}
 	
 	private void initListeners() {
